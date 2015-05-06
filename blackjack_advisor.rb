@@ -28,7 +28,6 @@ dealer_card = 0
   end
   if counter < 2
     player_sum += card
-    puts player_sum
   else
     dealer_card = card
   end
