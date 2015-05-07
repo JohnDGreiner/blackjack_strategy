@@ -68,12 +68,7 @@ def get_prompt_text(counter)
 end
 
 counter = 0
-r_card = 0
-player_sum = 0
-dealer_card = 0
-answer_type = ''
 cards = []
-
 
 (0..2).each do |counter|
   puts "Enter " + get_prompt_text(counter) + ":"
