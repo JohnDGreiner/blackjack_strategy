@@ -51,18 +51,14 @@ pair[10]["77"] = "Stand"
 [8,9].each { |dealer| pair[dealer]["99"] = "Split" }
 [7,10,11].each { |dealer| pair[dealer]["99"] = "Stand" }
 (2..11).each { |dealer| pair[dealer]["1010"] = "Stand"}
-(2..11).each { |dealer| pair[dealer]["AA"] = "Stand"}
-
-
-
-p pair
+(2..11).each { |dealer| pair[dealer]["AA"] = "Split"}
 
 # returns values for non numeric cards
 def royal_values_finder(card)
   royal_values = { "J" => 10,
                    "Q" => 10,
                    "K" => 10 }
-  puts royal_values[card]
+  return royal_values[card]
 end
 
 # get text for prompting user
@@ -71,30 +67,32 @@ def get_prompt_text(counter)
   return prompt_strings[counter]
 end
 
-card = ''
 counter = 0
 r_card = 0
 player_sum = 0
 dealer_card = 0
+answer_type = ''
+cards = []
+
 
 (0..2).each do |counter|
   puts "Enter " + get_prompt_text(counter) + ":"
-  card = gets.chomp
-  if card.to_i.to_s != card
-    card = royal_values_finder(card)
-  else
-    card = card.to_i
-  end
-  if counter < 2
-    player_sum += card
-  else
-    dealer_card = card
+  cards << gets.chomp
+  if cards[counter].to_i.to_s != cards[counter]
+    if cards[counter] != "A"
+      cards[counter] = royal_values_finder(cards[counter])
+    end
+  elsif cards[counter] != "A"
+    cards[counter] = cards[counter].to_i
   end
 end
-puts dealer_card
-puts player_sum
-
-
-#card = ""
-#puts "Enter First card you were dealt:"
-#card = gets.chomp
+if cards[2] = "A"
+  cards[2] = 11
+end
+if cards[0] == cards[1]
+  puts pair[cards[2]][cards[0].to_s + cards[1].to_s]
+elsif cards.include?("A")
+  puts soft[cards[2]][cards[0].to_i + cards[1].to_i + 11]
+else
+  puts hard[cards[2]][cards[0].to_i + cards[1].to_i + 1]
+end
