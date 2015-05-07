@@ -2,8 +2,16 @@
 hard = {2 => {}, 3 => {}, 4 => {}, 5 => {}, 6 => {}, 7 => {}, 8 => {}, 9 => {},
 10 => {}, 11 => {} }
 
-(2..11).each { |dealer| (5..16).each { |player| hard[dealer][player] = "hit" }}
-(2..11).each { |dealer| (17..21).each { |player| hard[dealer][player] = "stand" }}
+(2..11).each { |dealer| (5..16).each { |player| hard[dealer][player] = "Hit" }}
+(2..11).each { |dealer| (17..21).each { |player| hard[dealer][player] = "Stand" }}
+(4..6).each { |dealer| hard[dealer][12] = "Stand" }
+(2..6).each { |dealer| (13..16).each { |player| hard[dealer][player] = "Stand" }}
+[5,6].each { |dealer| hard[dealer][8] = "Double down if possible or Hit" }
+(2..6).each { |dealer| hard[dealer][9] = "Double down if possible or Hit" }
+(2..9).each { |dealer| hard[dealer][10] = "Double down if possible or Hit" }
+(2..11).each { |dealer| hard[dealer][11] = "Double down if possible or Hit" }
+
+
 p hard
 
 # returns values for non numeric cards
