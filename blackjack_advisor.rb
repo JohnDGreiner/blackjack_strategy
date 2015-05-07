@@ -1,8 +1,16 @@
+
+hard = {2 => {}, 3 => {}, 4 => {}, 5 => {}, 6 => {}, 7 => {}, 8 => {}, 9 => {},
+10 => {}, 11 => {} }
+
+(2..11).each { |dealer| (5..16).each { |player| hard[dealer][player] = "hit" }}
+(2..11).each { |dealer| (17..21).each { |player| hard[dealer][player] = "stand" }}
+p hard
+
 # returns values for non numeric cards
 def royal_values_finder(card)
   royal_values = { "J" => 10,
                    "Q" => 10,
-                   "K" => 10, }
+                   "K" => 10 }
   puts royal_values[card]
 end
 
