@@ -81,7 +81,7 @@ cards = []
     cards[counter] = cards[counter].to_i
   end
 end
-if cards[2] = "A"
+if cards[2] == "A"
   cards[2] = 11
 end
 if cards[0] == cards[1]
